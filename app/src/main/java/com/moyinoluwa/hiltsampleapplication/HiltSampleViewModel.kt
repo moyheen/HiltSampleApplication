@@ -1,10 +1,10 @@
 package com.moyinoluwa.hiltsampleapplication
 
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.ViewModel
 import com.moyinoluwa.hiltsampleapplication.data.HiltSampleRepository
-import javax.inject.Inject
 
-class HiltSampleViewModel @Inject constructor(
+class HiltSampleViewModel @ViewModelInject constructor(
     private val hiltSampleRepository: HiltSampleRepository
 ) : ViewModel() {
 

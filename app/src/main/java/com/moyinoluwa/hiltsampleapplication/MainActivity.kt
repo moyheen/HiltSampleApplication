@@ -1,23 +1,22 @@
 package com.moyinoluwa.hiltsampleapplication
 
 import android.os.Bundle
+import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import com.moyinoluwa.hiltsampleapplication.util.ImageLoader
-import dagger.android.support.DaggerAppCompatActivity
+import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
-class MainActivity : DaggerAppCompatActivity() {
+@AndroidEntryPoint
+class MainActivity : AppCompatActivity() {
 
-    @Inject lateinit var viewModelFactory: ViewModelProvider.Factory
     @Inject lateinit var imageLoader: ImageLoader
 
-    private lateinit var viewModel: HiltSampleViewModel
+    private val viewModel: HiltSampleViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        viewModel = ViewModelProviders.of(this, viewModelFactory)[HiltSampleViewModel::class.java]
     }
 }
